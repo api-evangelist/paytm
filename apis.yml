@@ -1,0 +1,267 @@
+aid: paytm
+name: Paytm
+description: >-
+  Paytm (One97 Communications) is India's leading digital payments and
+  financial services company. Through Paytm for Business it operates a wide
+  catalogue of payment APIs covering online payment gateway, UPI, payment
+  links, subscriptions, auto-debit, pre-auth, refunds, settlement, payouts,
+  token gateway, bank offers, EMI, disputes, and in-store retail solutions
+  (Dynamic QR, EDC, Point-of-Sale). Backend integrations are exposed via
+  REST APIs at the secure gateway (securegw.paytm.in), with first-party
+  Android, iOS, Flutter, React Native, and Web JS / Custom Checkout / JS
+  Elements SDKs, and server SDKs for S2S checksum-signed flows.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+position: Producer
+created: '2026-05-23'
+modified: '2026-05-23'
+tags:
+  - Payments
+  - Payment Gateway
+  - UPI
+  - Payouts
+  - Subscriptions
+  - Refunds
+  - Settlement
+  - QR
+  - EDC
+  - Fintech
+  - India
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/paytm/refs/heads/main/apis.yml
+specificationVersion: '0.20'
+apis:
+  - aid: paytm:payments
+    name: Paytm Payments API
+    description: >-
+      Core server-to-server payment initiation and status APIs. Generates
+      transaction tokens, processes payments across UPI, cards, netbanking,
+      and wallet, and exposes transaction-status retrieval. Requests are
+      checksum-signed and routed through the secure gateway.
+    humanURL: https://business.paytm.com/docs/api/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Payments
+      - Checkout
+      - Transactions
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/
+  - aid: paytm:refunds
+    name: Paytm Refunds API
+    description: >-
+      Initiates full and partial refunds against settled or unsettled Paytm
+      transactions and exposes refund status retrieval. Supports instant
+      refund flows for eligible payment methods.
+    humanURL: https://business.paytm.com/docs/api/refunds/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Refunds
+      - Payments
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/refunds/
+  - aid: paytm:settlement
+    name: Paytm Settlement API
+    description: >-
+      Returns settlement reports and merchant payout cycles for transactions
+      collected through Paytm, including settlement IDs, UTRs, and per-order
+      breakdowns for reconciliation.
+    humanURL: https://business.paytm.com/docs/api/settlement/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Settlement
+      - Reconciliation
+      - Reporting
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/settlement/
+  - aid: paytm:subscriptions
+    name: Paytm Subscriptions API
+    description: >-
+      Creates and manages recurring payment subscriptions and mandates across
+      cards, UPI AutoPay, and netbanking e-mandates. Supports plan creation,
+      subscription activation, renewal charging, and cancellation.
+    humanURL: https://business.paytm.com/docs/api/subscription/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Subscriptions
+      - Recurring
+      - Mandates
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/subscription/
+  - aid: paytm:auto-debit
+    name: Paytm Auto-Debit API
+    description: >-
+      Auto-debit mandate APIs for recurring collections, enabling merchants
+      to register, authenticate, and debit customer accounts on a schedule
+      under RBI's e-mandate framework.
+    humanURL: https://business.paytm.com/docs/api/auto-debit/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Auto Debit
+      - Mandates
+      - Recurring
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/auto-debit/
+  - aid: paytm:pre-auth
+    name: Paytm Pre-Auth API
+    description: >-
+      Authorize and later capture or release card holds. Used for travel,
+      hospitality, and rental flows that need to block funds before final
+      settlement.
+    humanURL: https://business.paytm.com/docs/api/pre-auth/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Pre Auth
+      - Authorization
+      - Capture
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/pre-auth/
+  - aid: paytm:payment-links
+    name: Paytm Payment Links API
+    description: >-
+      Generate shareable payment links for collection over email, SMS,
+      WhatsApp, or social channels. Supports expiry, partial payments, and
+      callback notifications on completion.
+    humanURL: https://business.paytm.com/docs/api/payment-links/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Payment Links
+      - Collection
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/payment-links/
+  - aid: paytm:token-gateway
+    name: Paytm Token Gateway API
+    description: >-
+      Card tokenization service compliant with RBI guidelines. Exchanges raw
+      card PANs for network or issuer tokens that merchants can store and use
+      for repeat charging and CVV-less flows.
+    humanURL: https://business.paytm.com/docs/api/token-gateway/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Tokenization
+      - Card on File
+      - PCI
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/token-gateway/
+  - aid: paytm:bank-offers
+    name: Paytm Bank Offers / EMI API
+    description: >-
+      Returns available bank offers, instant discounts, no-cost EMI plans,
+      and EMI subvention metadata for the customer's card or netbanking
+      option at checkout.
+    humanURL: https://business.paytm.com/docs/api/bank-offers/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Offers
+      - EMI
+      - Affordability
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/bank-offers/
+  - aid: paytm:disputes
+    name: Paytm Disputes / Chargeback API
+    description: >-
+      Lists, retrieves, and responds to chargebacks and disputes raised
+      against merchant transactions, including evidence upload and status
+      tracking.
+    humanURL: https://business.paytm.com/docs/api/disputes/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - Disputes
+      - Chargebacks
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/disputes/
+  - aid: paytm:dynamic-qr
+    name: Paytm Dynamic QR API
+    description: >-
+      Generates per-order dynamic UPI / Bharat QR codes for in-store and
+      contactless collection, with order-linked status callbacks.
+    humanURL: https://business.paytm.com/docs/api/dynamic-qr/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - QR
+      - UPI
+      - In Store
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/dynamic-qr/
+  - aid: paytm:webhook
+    name: Paytm Status Notification Webhook
+    description: >-
+      Server-to-server notification posted to a merchant-configured URL when
+      a transaction reaches a terminal state. Includes signed payload with
+      transaction, refund, or subscription event details.
+    humanURL: https://business.paytm.com/docs/api/webhook/
+    baseURL: customer-configured
+    tags:
+      - Webhooks
+      - Events
+      - Callbacks
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/api/webhook/
+  - aid: paytm:all-in-one-sdk-android
+    name: Paytm All-in-One SDK (Android)
+    description: >-
+      Native Android SDK that hosts the Paytm payment experience inside the
+      merchant app, supporting UPI, cards, netbanking, wallet, and Paytm
+      Postpaid in a single flow.
+    humanURL: https://business.paytm.com/docs/all-in-one-sdk/
+    baseURL: https://business.paytm.com/docs/all-in-one-sdk/
+    tags:
+      - SDK
+      - Android
+      - Mobile
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/all-in-one-sdk/
+  - aid: paytm:all-in-one-sdk-ios
+    name: Paytm All-in-One SDK (iOS)
+    description: >-
+      Native iOS SDK that hosts the Paytm payment experience inside the
+      merchant app across all supported payment methods.
+    humanURL: https://business.paytm.com/docs/all-in-one-sdk/
+    baseURL: https://business.paytm.com/docs/all-in-one-sdk/
+    tags:
+      - SDK
+      - iOS
+      - Mobile
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/all-in-one-sdk/
+  - aid: paytm:js-checkout
+    name: Paytm JS Checkout
+    description: >-
+      Browser JavaScript checkout that renders the Paytm payment page in two
+      steps - server-side token creation followed by client-side invocation
+      of the hosted checkout overlay.
+    humanURL: https://business.paytm.com/docs/js-checkout/
+    baseURL: https://securegw.paytm.in
+    tags:
+      - JavaScript
+      - Checkout
+      - Web
+    properties:
+      - type: Documentation
+        url: https://business.paytm.com/docs/js-checkout/
+common:
+  - type: Website
+    url: https://business.paytm.com/
+  - type: Documentation
+    url: https://business.paytm.com/docs/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/paytm
+  - type: GitHub
+    url: https://github.com/Paytm-Payments
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
