@@ -262,6 +262,8 @@ common:
     url: https://www.linkedin.com/company/paytm
   - type: GitHub
     url: https://github.com/Paytm-Payments
+  - type: LLMsTxt
+    url: https://paytm.com/llms.txt
 maintainers:
   - FN: API Evangelist
     url: https://apievangelist.com
