@@ -1,0 +1,358 @@
+{
+  "item": [
+    {
+      "id": "0cd755a7-1a0a-4d0b-a58c-2f6c50fe7682",
+      "name": "Payments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "757d25d5-2cec-424e-8959-34e887e6e773",
+          "name": "Initiate transaction",
+          "request": {
+            "name": "Initiate transaction",
+            "description": {
+              "content": "Creates a transaction at Paytm and returns a txnToken (valid 15 minutes) that the merchant uses to invoke the checkout SDK or call processTransaction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "theia",
+                "api",
+                "v1",
+                "initiateTransaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mid",
+                  "value": "<string>",
+                  "description": "(Required) Merchant ID issued by Paytm."
+                },
+                {
+                  "disabled": false,
+                  "key": "orderId",
+                  "value": "<string>",
+                  "description": "(Required) Merchant-generated unique order id (max 50 chars)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"requestType\": \"<string>\",\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"txnAmount\": {\n      \"value\": \"<string>\",\n      \"currency\": \"<string>\"\n    },\n    \"userInfo\": {\n      \"custId\": \"<string>\"\n    },\n    \"websiteName\": \"<string>\",\n    \"callbackUrl\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3787fea2-9dd3-4d37-885b-340e75abf5f7",
+              "name": "Transaction initiated; response contains body.txnToken.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "theia",
+                    "api",
+                    "v1",
+                    "initiateTransaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"requestType\": \"Payment\",\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"txnAmount\": {\n      \"value\": \"<string>\",\n      \"currency\": \"INR\"\n    },\n    \"userInfo\": {\n      \"custId\": \"<string>\"\n    },\n    \"websiteName\": \"<string>\",\n    \"callbackUrl\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef2fc3a2-1be8-4d8e-b9a0-76e8615d5c98",
+          "name": "Process transaction",
+          "request": {
+            "name": "Process transaction",
+            "description": {
+              "content": "Processes a transaction for the selected payment mode. Requires the txnToken from initiateTransaction in the request header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "theia",
+                "api",
+                "v1",
+                "processTransaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "mid",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "orderId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) 15-minute-lived txnToken from initiateTransaction.",
+                "key": "txnToken",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"paymentMode\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e45efd4-ac92-4b78-9033-fd9bdf6d1771",
+              "name": "Returns either a redirect/bank form or an immediate payment result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "theia",
+                    "api",
+                    "v1",
+                    "processTransaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "mid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) 15-minute-lived txnToken from initiateTransaction.",
+                    "key": "txnToken",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"paymentMode\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1392e371-3a6c-4ac5-87ce-7038f8848016",
+      "name": "Refunds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a9b68ac-d831-4022-adcd-1f5685591868",
+          "name": "Initiate refund",
+          "request": {
+            "name": "Initiate refund",
+            "description": {
+              "content": "Initiates a refund (full or partial) for a completed Paytm transaction. Refunds are asynchronous; success of this call only acknowledges registration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refund",
+                "apply"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"refId\": \"<string>\",\n    \"txnId\": \"<string>\",\n    \"txnType\": \"<string>\",\n    \"refundAmount\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9fdfa056-6e24-421a-824b-dd8aef68ff53",
+              "name": "Refund registered.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refund",
+                    "apply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"refId\": \"<string>\",\n    \"txnId\": \"<string>\",\n    \"txnType\": \"<string>\",\n    \"refundAmount\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://securegw.paytm.in",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ad5bca09-a4e0-4280-8766-09d64434cd64",
+    "name": "Paytm Payment Gateway API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-to-server REST APIs for Paytm Payment Gateway integrations. Covers transaction initiation (returning a txnToken used by checkout SDKs), transaction processing for selected payment modes, and refund initiation. Requests are signed via Paytm's checksum logic and the signature is sent in the request head.\n\nContact Support:\n Name: Paytm for Business",
+      "type": "text/plain"
+    }
+  }
+}

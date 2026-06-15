@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Paytm Payment Gateway API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://securegw.paytm.in/theia/api/v1/initiateTransaction",
+            "params": [
+              {
+                "name": "mid",
+                "value": "",
+                "type": "query",
+                "description": "Merchant ID issued by Paytm."
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "query",
+                "description": "Merchant-generated unique order id (max 50 chars)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a transaction at Paytm and returns a txnToken (valid 15 minutes) that the merchant uses to invoke the checkout SDK or call processTransaction."
+        },
+        {
+          "info": {
+            "name": "Process transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://securegw.paytm.in/theia/api/v1/processTransaction",
+            "headers": [
+              {
+                "name": "txnToken",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "mid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "orderId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Processes a transaction for the selected payment mode. Requires the txnToken from initiateTransaction in the request header."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate refund",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://securegw.paytm.in/refund/apply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a refund (full or partial) for a completed Paytm transaction. Refunds are asynchronous; success of this call only acknowledges registration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
