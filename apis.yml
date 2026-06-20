@@ -11,7 +11,7 @@ description: >-
   Android, iOS, Flutter, React Native, and Web JS / Custom Checkout / JS
   Elements SDKs, and server SDKs for S2S checksum-signed flows.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 position: Producer
 created: '2026-05-23'
