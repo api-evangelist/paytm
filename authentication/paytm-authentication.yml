@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/paytm-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: paytmChecksum
+  type: apiKey
+  in: header
+  parameter: signature
+  description: Checksum signature computed over the request body using Paytm's merchant key.
+    Carried in the request head.signature property and/or as a request header per endpoint guidance.
+  sources:
+  - openapi/paytm-openapi.yml
