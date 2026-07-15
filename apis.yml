@@ -254,6 +254,8 @@ apis:
       - type: Documentation
         url: https://business.paytm.com/docs/js-checkout/
 common:
+  - type: AgenticAccess
+    url: agentic-access/paytm-agentic-access.yml
   - type: DomainSecurity
     url: security/paytm-domain-security.yml
   - type: Authentication
