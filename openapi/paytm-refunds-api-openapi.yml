@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: Paytm Payment Gateway Payments Refunds API
+  description: Server-to-server REST APIs for Paytm Payment Gateway integrations. Covers transaction initiation (returning a txnToken used by checkout SDKs), transaction processing for selected payment modes, and refund initiation. Requests are signed via Paytm's checksum logic and the signature is sent in the request head.
+  version: '1.0'
+  contact:
+    name: Paytm for Business
+    url: https://business.paytm.com/docs/api/
+servers:
+- url: https://securegw.paytm.in
+  description: Production
+- url: https://securegw-stage.paytm.in
+  description: Staging
+- url: https://secure.paytmpayments.com
+  description: Production (paytmpayments.com host)
+- url: https://securestage.paytmpayments.com
+  description: Staging (paytmpayments.com host)
+security: []
+tags:
+- name: Refunds
+paths:
+  /refund/apply:
+    post:
+      tags:
+      - Refunds
+      summary: Initiate refund
+      description: Initiates a refund (full or partial) for a completed Paytm transaction. Refunds are asynchronous; success of this call only acknowledges registration.
+      operationId: initiateRefund
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                head:
+                  type: object
+                  properties:
+                    signature:
+                      type: string
+                body:
+                  type: object
+                  required:
+                  - mid
+                  - orderId
+                  - refId
+                  - txnId
+                  - txnType
+                  - refundAmount
+                  properties:
+                    mid:
+                      type: string
+                    orderId:
+                      type: string
+                    refId:
+                      type: string
+                      description: Merchant-generated unique refund reference.
+                    txnId:
+                      type: string
+                      description: Paytm payment transaction id being refunded.
+                    txnType:
+                      type: string
+                      enum:
+                      - REFUND
+                    refundAmount:
+                      type: string
+                      description: Up to 2 decimal places.
+      responses:
+        '200':
+          description: Refund registered.
+components:
+  securitySchemes:
+    paytmChecksum:
+      type: apiKey
+      in: header
+      name: signature
+      description: Checksum signature computed over the request body using Paytm's merchant key. Carried in the request head.signature property and/or as a request header per endpoint guidance.
