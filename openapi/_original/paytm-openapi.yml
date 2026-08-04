@@ -1,0 +1,202 @@
+openapi: 3.1.0
+info:
+  title: Paytm Payment Gateway API
+  description: >-
+    Server-to-server REST APIs for Paytm Payment Gateway integrations. Covers
+    transaction initiation (returning a txnToken used by checkout SDKs),
+    transaction processing for selected payment modes, and refund initiation.
+    Requests are signed via Paytm's checksum logic and the signature is sent in
+    the request head.
+  version: "1.0"
+  contact:
+    name: Paytm for Business
+    url: https://business.paytm.com/docs/api/
+servers:
+  - url: https://securegw.paytm.in
+    description: Production
+  - url: https://securegw-stage.paytm.in
+    description: Staging
+  - url: https://secure.paytmpayments.com
+    description: Production (paytmpayments.com host)
+  - url: https://securestage.paytmpayments.com
+    description: Staging (paytmpayments.com host)
+security: []
+tags:
+  - name: Payments
+  - name: Refunds
+paths:
+  /theia/api/v1/initiateTransaction:
+    post:
+      tags: [Payments]
+      summary: Initiate transaction
+      description: >-
+        Creates a transaction at Paytm and returns a txnToken (valid 15 minutes)
+        that the merchant uses to invoke the checkout SDK or call
+        processTransaction.
+      operationId: initiateTransaction
+      parameters:
+        - name: mid
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Merchant ID issued by Paytm.
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Merchant-generated unique order id (max 50 chars).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                head:
+                  type: object
+                  properties:
+                    signature:
+                      type: string
+                      description: Checksum generated from the request body.
+                body:
+                  type: object
+                  properties:
+                    requestType:
+                      type: string
+                      example: Payment
+                    mid:
+                      type: string
+                    orderId:
+                      type: string
+                    txnAmount:
+                      type: object
+                      properties:
+                        value:
+                          type: string
+                        currency:
+                          type: string
+                          example: INR
+                    userInfo:
+                      type: object
+                      properties:
+                        custId:
+                          type: string
+                    websiteName:
+                      type: string
+                    callbackUrl:
+                      type: string
+      responses:
+        '200':
+          description: Transaction initiated; response contains body.txnToken.
+  /theia/api/v1/processTransaction:
+    post:
+      tags: [Payments]
+      summary: Process transaction
+      description: >-
+        Processes a transaction for the selected payment mode. Requires the
+        txnToken from initiateTransaction in the request header.
+      operationId: processTransaction
+      parameters:
+        - name: mid
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: orderId
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: txnToken
+          in: header
+          required: true
+          schema:
+            type: string
+          description: 15-minute-lived txnToken from initiateTransaction.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                head:
+                  type: object
+                  properties:
+                    signature:
+                      type: string
+                body:
+                  type: object
+                  properties:
+                    mid:
+                      type: string
+                    orderId:
+                      type: string
+                    paymentMode:
+                      type: string
+                      description: BALANCE, CREDIT_CARD, DEBIT_CARD, NET_BANKING, UPI, etc.
+      responses:
+        '200':
+          description: Returns either a redirect/bank form or an immediate payment result.
+  /refund/apply:
+    post:
+      tags: [Refunds]
+      summary: Initiate refund
+      description: >-
+        Initiates a refund (full or partial) for a completed Paytm transaction.
+        Refunds are asynchronous; success of this call only acknowledges
+        registration.
+      operationId: initiateRefund
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                head:
+                  type: object
+                  properties:
+                    signature:
+                      type: string
+                body:
+                  type: object
+                  required:
+                    - mid
+                    - orderId
+                    - refId
+                    - txnId
+                    - txnType
+                    - refundAmount
+                  properties:
+                    mid:
+                      type: string
+                    orderId:
+                      type: string
+                    refId:
+                      type: string
+                      description: Merchant-generated unique refund reference.
+                    txnId:
+                      type: string
+                      description: Paytm payment transaction id being refunded.
+                    txnType:
+                      type: string
+                      enum: [REFUND]
+                    refundAmount:
+                      type: string
+                      description: Up to 2 decimal places.
+      responses:
+        '200':
+          description: Refund registered.
+components:
+  securitySchemes:
+    paytmChecksum:
+      type: apiKey
+      in: header
+      name: signature
+      description: >-
+        Checksum signature computed over the request body using Paytm's
+        merchant key. Carried in the request head.signature property and/or as
+        a request header per endpoint guidance.

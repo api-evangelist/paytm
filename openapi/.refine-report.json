@@ -1,0 +1,16 @@
+{
+  "provider": "paytm",
+  "sources": [
+    "paytm-payments-api-openapi.yml",
+    "paytm-refunds-api-openapi.yml"
+  ],
+  "outputs": [
+    "paytm-payments-api-openapi.yml",
+    "paytm-refunds-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
