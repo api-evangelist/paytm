@@ -1,0 +1,115 @@
+{
+  "item": [
+    {
+      "id": "7cd91cc5-8682-451d-a8b7-3babda4b25c4",
+      "name": "Refunds",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "13550359-9e34-4049-81e8-a28813e65dbe",
+          "name": "Initiate refund",
+          "request": {
+            "name": "Initiate refund",
+            "description": {
+              "content": "Initiates a refund (full or partial) for a completed Paytm transaction. Refunds are asynchronous; success of this call only acknowledges registration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "refund",
+                "apply"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"refId\": \"<string>\",\n    \"txnId\": \"<string>\",\n    \"txnType\": \"<string>\",\n    \"refundAmount\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f519eb0-3a9d-464f-b137-440b0c72dd3a",
+              "name": "Refund registered.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "refund",
+                    "apply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"head\": {\n    \"signature\": \"<string>\"\n  },\n  \"body\": {\n    \"mid\": \"<string>\",\n    \"orderId\": \"<string>\",\n    \"refId\": \"<string>\",\n    \"txnId\": \"<string>\",\n    \"txnType\": \"<string>\",\n    \"refundAmount\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://securegw.paytm.in",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "602217d9-df1b-4b93-80b9-cd39a238c5b4",
+    "name": "Paytm Payment Gateway Payments Refunds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Server-to-server REST APIs for Paytm Payment Gateway integrations. Covers transaction initiation (returning a txnToken used by checkout SDKs), transaction processing for selected payment modes, and refund initiation. Requests are signed via Paytm's checksum logic and the signature is sent in the request head.\n\nContact Support:\n Name: Paytm for Business",
+      "type": "text/plain"
+    }
+  }
+}
