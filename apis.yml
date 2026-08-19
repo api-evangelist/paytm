@@ -43,7 +43,7 @@ tags:
   - India
 url: >-
   https://raw.githubusercontent.com/api-evangelist/paytm/refs/heads/main/apis.yml
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 apis:
 - aid: paytm:payments
   name: Paytm Payments API
