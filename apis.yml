@@ -34,6 +34,18 @@ tags:
   - Payment Gateway
   - UPI
   - Payouts
+  - Subscription
+  - Refunds
+  - Settlement
+  - QR
+  - EDC
+  - Fintech
+  - India
+tags_raw:
+  - Payments
+  - Payment Gateway
+  - UPI
+  - Payouts
   - Subscriptions
   - Refunds
   - Settlement
@@ -54,6 +66,10 @@ apis:
   humanURL: https://business.paytm.com/docs/api/
   baseURL: https://securegw.paytm.in
   tags:
+  - Payments
+  - Checkout
+  - Transaction
+  tags_raw:
   - Payments
   - Checkout
   - Transactions
@@ -95,6 +111,10 @@ apis:
   humanURL: https://business.paytm.com/docs/api/subscription/
   baseURL: https://securegw.paytm.in
   tags:
+  - Subscription
+  - Recurring
+  - Mandates
+  tags_raw:
   - Subscriptions
   - Recurring
   - Mandates
@@ -123,6 +143,10 @@ apis:
   humanURL: https://business.paytm.com/docs/api/pre-auth/
   baseURL: https://securegw.paytm.in
   tags:
+  - Pre-Auth
+  - Authorization
+  - Capture
+  tags_raw:
   - Pre Auth
   - Authorization
   - Capture
@@ -193,6 +217,10 @@ apis:
   tags:
   - QR
   - UPI
+  - In-Store
+  tags_raw:
+  - QR
+  - UPI
   - In Store
   properties:
   - type: Documentation
@@ -205,6 +233,10 @@ apis:
   humanURL: https://business.paytm.com/docs/api/webhook/
   baseURL: customer-configured
   tags:
+  - Webhook
+  - Event
+  - Callbacks
+  tags_raw:
   - Webhooks
   - Events
   - Callbacks
