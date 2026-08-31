@@ -154,7 +154,7 @@ apis:
   humanURL: https://business.paytm.com/docs/api/pre-auth/
   baseURL: https://securegw.paytm.in
   tags:
-  - Pre-Auth
+  - Pre Auth
   - Authorization
   - Capture
   tags_raw:
@@ -228,7 +228,7 @@ apis:
   tags:
   - QR
   - UPI
-  - In-Store
+  - In Store
   tags_raw:
   - QR
   - UPI
