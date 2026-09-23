@@ -1,8 +1,7 @@
 {
   "provider": "paytm",
   "sources": [
-    "paytm-payments-api-openapi.yml",
-    "paytm-refunds-api-openapi.yml"
+    "_original/paytm-openapi.yml"
   ],
   "outputs": [
     "paytm-payments-api-openapi.yml",
@@ -11,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "paytm-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "paytm-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "paytm-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

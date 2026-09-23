@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Paytm Payment Gateway Payments API
   description: Server-to-server REST APIs for Paytm Payment Gateway integrations. Covers transaction initiation (returning a txnToken used by checkout SDKs), transaction processing for selected payment modes, and refund initiation. Requests are signed via Paytm's checksum logic and the signature is sent in the request head.
