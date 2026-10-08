@@ -318,6 +318,12 @@ apis:
   - type: OpenAPI
     url: openapi/paytm-refunds-api-openapi.yml
 common:
+  - type: Plans
+    url: plans/paytm-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/paytm-rate-limits.yml
+  - type: FinOps
+    url: finops/paytm-finops.yml
   - type: AgenticAccess
     url: agentic-access/paytm-agentic-access.yml
   - type: DomainSecurity
