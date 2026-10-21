@@ -85,6 +85,26 @@ edges:
     detected: '2026-10-19'
   detected_by: sweep-india-stack.py
   first_seen: '2026-10-19'
+- partner_name: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: Google Play SDK Index
+  evidence: https://play.google.com/sdks/details/com-paytm-appinvokesdk-appinvokesdk
+  mirror_of: google-play/integrations/google-play-integration-edges.yml
+  apps:
+  - Paytm All-in-One Payments SDK
+  - com.paytm.easypay:easypay
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: mobile SDK (payments)
+  publisher_verified:
+  - Registered in Google Play SDK Console
 generated: '2026-10-14'
 method: searched
 checked:
@@ -92,6 +112,7 @@ checked:
 - https://registry.modelcontextprotocol.io/v0/servers
 - https://sahamati.org.in/account-aggregators-in-india/
 - https://sahamati.org.in/fip-fiu-in-account-aggregators-ecosystem/
+- google-play/integrations/google-play-integration-edges.yml
 source:
 - https://sahamati.org.in/account-aggregators-in-india/
 - https://sahamati.org.in/fip-fiu-in-account-aggregators-ecosystem/

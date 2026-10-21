@@ -77,3 +77,16 @@
     detected: '2026-10-19'
   status: not-a-workflow
   arazzo: null
+- slug: paytm-google-play-developer-google-play-sdk-index
+  label: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_name: Google Play Developer (Google Play SDK Index)
+  category: mobile SDK (payments)
+  type: marketplace
+  marketplace: Google Play SDK Index
+  channel: partner-built
+  evidence: https://play.google.com/sdks/details/com-paytm-appinvokesdk-appinvokesdk
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
